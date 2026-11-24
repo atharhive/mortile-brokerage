@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import type { AppRoute } from '../types/brokerage';
 import { CommissionStructureCard } from '../components/observatory/EditorialDiagrams';
+import { EditorialButton } from '../components/ui/EditorialButton';
 
 interface ServicesPageProps {
   onNavigate: (route: AppRoute) => void;
@@ -63,38 +65,42 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
   return (
     <div className="w-full bg-canvas-white">
       {/* Header */}
-      <section className="max-w-[1200px] mx-auto px-6 pt-14 pb-16">
+      <section className="editorial-container pt-14 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7"
+          >
             <p className="font-editorial text-[13px] text-brass mb-3">
               Advisory &amp; Brokerage Services
             </p>
             <h1 className="display-headline text-graphite">
               Structured domain brokerage for high-conviction transactions.
             </h1>
-            <p className="mt-6 text-[18px] leading-[1.5] text-steel max-w-[580px]">
+            <p className="mt-6 text-[18px] leading-[1.55] text-steel max-w-[620px]">
               Whether acquiring an off-market flagship .com or divesting a
               curated .si / .ai portfolio, every Mortila mandate is governed by
               clear fee alignment, strict confidentiality, and regulated escrow
               settlement.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <button
-                type="button"
+              <EditorialButton
+                variant="primary"
+                showArrow
                 onClick={() => onNavigate('buy')}
-                className="btn-graphite cursor-pointer"
               >
                 Looking to Buy
-              </button>
-              <button
-                type="button"
+              </EditorialButton>
+              <EditorialButton
+                variant="ghost"
                 onClick={() => onNavigate('sell')}
-                className="btn-ghost-graphite cursor-pointer"
               >
                 Looking to Sell
-              </button>
+              </EditorialButton>
             </div>
-          </div>
+          </motion.div>
 
           <div className="lg:col-span-5">
             <CommissionStructureCard />
@@ -102,13 +108,17 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Numbered Services List on Ash Surface */}
-      <section className="w-full bg-ash py-20">
-        <div className="max-w-[1200px] mx-auto px-6 space-y-6">
-          {SERVICES.map((svc) => (
-            <article
+      {/* Numbered Services List on Textured Ash Surface */}
+      <section className="w-full surface-paper-ash border-y border-graphite/8 py-20 lg:py-24">
+        <div className="editorial-container space-y-6">
+          {SERVICES.map((svc, idx) => (
+            <motion.article
               key={svc.index}
-              className="bg-canvas-white asymmetric-card p-8 sm:p-12 border border-mist grid grid-cols-1 lg:grid-cols-12 gap-8"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="surface-paper-white tactile-card asymmetric-card p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8"
             >
               <div className="lg:col-span-5">
                 <div className="flex items-baseline gap-3">
@@ -125,10 +135,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               </div>
 
               <div className="lg:col-span-7 space-y-5">
-                <p className="text-[16px] leading-[1.6] text-steel">
+                <p className="text-[16px] leading-[1.65] text-steel">
                   {svc.summary}
                 </p>
-                <div className="pt-4 border-t border-mist grid grid-cols-1 sm:grid-cols-2 gap-3 text-[14px] text-graphite">
+                <div className="pt-4 border-t border-graphite/10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[14px] text-graphite">
                   {svc.deliverables.map((item) => (
                     <p key={item} className="leading-[1.5]">
                       · {item}
@@ -136,14 +146,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>
 
       {/* Escrow Terms Comparison Matrix */}
-      <section className="max-w-[1200px] mx-auto px-6 py-20">
-        <div className="max-w-[620px] mb-10">
+      <section className="editorial-container py-20 lg:py-24">
+        <div className="max-w-[660px] mb-10">
           <p className="font-editorial text-[13px] text-brass mb-2">
             Settlement Architecture
           </p>
@@ -152,7 +162,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           </h2>
         </div>
 
-        <div className="overflow-x-auto border border-mist">
+        <div className="overflow-x-auto tactile-widget">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-fog border-b border-mist text-[13px] text-slate">
@@ -165,7 +175,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             </thead>
             <tbody className="divide-y divide-mist text-[14px]">
               <tr>
-                <td className="py-4 px-6 font-editorial text-[16px] text-graphite">
+                <td className="py-4 px-6 font-editorial text-[17px] text-graphite">
                   Single Asset Listing
                 </td>
                 <td className="py-4 px-6 font-mono tabular-nums text-steel">
@@ -178,7 +188,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                 <td className="py-4 px-6 text-steel">Escrow.com / Atom</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 font-editorial text-[16px] text-graphite">
+                <td className="py-4 px-6 font-editorial text-[17px] text-graphite">
                   Institutional Portfolio Sale
                 </td>
                 <td className="py-4 px-6 font-mono tabular-nums text-steel">
@@ -191,7 +201,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                 <td className="py-4 px-6 text-steel">Escrow.com Concierge</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 font-editorial text-[16px] text-graphite">
+                <td className="py-4 px-6 font-editorial text-[17px] text-graphite">
                   Buyer Stealth Acquisition
                 </td>
                 <td className="py-4 px-6 font-mono tabular-nums text-steel">
@@ -208,13 +218,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </div>
 
         <div className="mt-10 flex justify-end">
-          <button
-            type="button"
+          <EditorialButton
+            variant="primary"
+            showArrow
             onClick={() => onNavigate('contact')}
-            className="btn-graphite cursor-pointer"
           >
             Request custom brokerage terms
-          </button>
+          </EditorialButton>
         </div>
       </section>
     </div>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import type { AppRoute } from '../../types/brokerage';
+import { BrandWordmark } from './BrandWordmark';
+import { EditorialButton } from '../ui/EditorialButton';
 
 interface FooterProps {
   onNavigate: (route: AppRoute) => void;
@@ -9,19 +11,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [cookieDialogOpen, setCookieDialogOpen] = useState(false);
 
   return (
-    <footer className="w-full bg-ash border-t border-mist pt-16 pb-12">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-mist">
+    <footer className="w-full surface-paper-ash border-t border-graphite/10 pt-16 pb-12">
+      <div className="editorial-container">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-graphite/10">
           {/* Editorial Brand Summary */}
           <div className="md:col-span-5">
-            <button
-              type="button"
-              onClick={() => onNavigate('home')}
-              className="font-editorial text-[24px] text-graphite cursor-pointer"
-            >
-              Mortila Brokerage
-            </button>
-            <p className="mt-4 text-[15px] leading-[1.6] text-steel max-w-[380px]">
+            <BrandWordmark size="lg" onClick={() => onNavigate('home')} />
+            <p className="mt-5 text-[15px] leading-[1.6] text-steel max-w-[400px]">
               Independent domain brokerage and private digital asset advisory.
               Representing category-defining .com, .ai, .io, and .si holdings
               with discreet bilateral negotiation and institutional escrow
@@ -109,7 +105,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="md:col-span-3 space-y-3">
-            <p className="font-editorial text-[14px] text-slate">Direct Channels</p>
+            <p className="font-editorial text-[14px] text-slate">
+              Direct Channels
+            </p>
             <ul className="space-y-2.5 text-[14px] text-steel">
               <li>
                 <a
@@ -128,7 +126,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom Quiet Legal Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[13px] font-editorial text-slate">
-          <p>© {new Date().getFullYear()} Mortila Brokerage. All transactions settled via licensed escrow.</p>
+          <p>
+            © {new Date().getFullYear()} Mortila Brokerage. All transactions
+            settled via licensed escrow.
+          </p>
           <div className="flex items-center gap-6">
             <button
               type="button"
@@ -148,11 +149,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Quiet Cookie Preferences Drawer/Modal */}
+      {/* Quiet Cookie Preferences Dialog */}
       {cookieDialogOpen && (
-        <div className="fixed inset-0 z-50 bg-graphite/35 flex items-center justify-center p-6">
-          <div className="bg-canvas-white border border-mist max-w-[460px] w-full p-8 asymmetric-card">
-            <p className="font-editorial text-[13px] text-brass">Privacy Standard</p>
+        <div className="fixed inset-0 z-50 bg-graphite/35 backdrop-blur-xs flex items-center justify-center p-6">
+          <div className="tactile-widget max-w-[460px] w-full p-8 asymmetric-card">
+            <p className="font-editorial text-[13px] text-brass">
+              Privacy Standard
+            </p>
             <h3 className="font-editorial text-[24px] text-graphite mt-1">
               Cookie preferences
             </h3>
@@ -162,13 +165,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               authenticated partner administration and secure offer submission.
             </p>
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button
-                type="button"
+              <EditorialButton
+                variant="primary"
                 onClick={() => setCookieDialogOpen(false)}
-                className="btn-graphite cursor-pointer"
               >
                 Acknowledge
-              </button>
+              </EditorialButton>
             </div>
           </div>
         </div>

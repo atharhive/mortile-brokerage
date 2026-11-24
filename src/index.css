@@ -18,33 +18,12 @@
   --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Typography — Scale */
-  --text-caption: 14px;
-  --leading-caption: 1.43;
-  --text-subheading: 18px;
-  --leading-subheading: 1.25;
-  --text-heading: 32px;
-  --leading-heading: 1.19;
-  --tracking-heading: -0.64px;
-  --text-heading-lg: 40px;
-  --leading-heading-lg: 1.2;
-  --tracking-heading-lg: -0.8px;
-  --text-display: 66px;
-  --leading-display: 0.91;
-  --tracking-display: -1.32px;
+  /* Fluid Editorial Container */
+  --page-max-width: 1480px;
 
-  /* Layout */
-  --page-max-width: 1200px;
-  --section-gap: 80px;
-  --card-padding: 40px;
-  --element-gap: 20px;
-
-  /* Radii */
-  --radius-tags: 20px;
-  --radius-cards: 8px;
-  --radius-buttons: 0px;
-  --radius-nav-pills: 200px;
-  --radius-asymmetric-card: 6px 0px 0px 0px;
+  /* Subtle embedded cotton-paper grain SVG */
+  --paper-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  --paper-noise-dark: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
 }
 
 @theme {
@@ -75,7 +54,7 @@
   h1, h2, h3, h4, .font-editorial {
     font-family: var(--font-polysans);
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   button, a, input, select, textarea {
@@ -83,47 +62,161 @@
   }
 }
 
+/* Expansive Fluid Ventriloc Container */
+.editorial-container {
+  width: 100%;
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .editorial-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .editorial-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .editorial-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
 .font-editorial {
   font-family: var(--font-polysans);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .display-headline {
   font-family: var(--font-polysans);
   font-weight: 400;
-  font-size: clamp(2.65rem, 4.8vw, 4.125rem);
-  line-height: 0.94;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.85rem, 4.9vw, 4.5rem);
+  line-height: 0.93;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .heading-lg-editorial {
   font-family: var(--font-polysans);
   font-weight: 400;
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.1rem, 3.2vw, 2.85rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 .heading-editorial {
   font-family: var(--font-polysans);
   font-weight: 400;
-  font-size: clamp(1.5rem, 2.2vw, 2rem);
-  line-height: 1.19;
+  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  line-height: 1.18;
   letter-spacing: -0.02em;
 }
 
+/* Signature Ventriloc Shapes */
 .asymmetric-card {
-  border-radius: 6px 0px 0px 0px;
+  border-radius: 8px 0px 0px 0px;
 }
 
 .data-widget-card {
-  border-radius: 20px;
+  border-radius: 18px;
 }
 
+/* Tactile Paper-Stock Surface Textures & Depth */
+.surface-paper-ash {
+  background-color: var(--color-ash);
+  background-image:
+    var(--paper-noise),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 45%);
+}
+
+.surface-paper-ivory {
+  background-color: var(--color-ivory);
+  background-image:
+    var(--paper-noise),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.45) 0%, rgba(129, 103, 41, 0.04) 100%);
+}
+
+.surface-paper-white {
+  background-color: var(--color-canvas-white);
+  background-image: var(--paper-noise);
+}
+
+.surface-architectural-grid {
+  background-color: var(--color-ash);
+  background-image:
+    var(--paper-noise),
+    linear-gradient(to right, rgba(32, 32, 32, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 32, 32, 0.035) 1px, transparent 1px);
+  background-size: auto, 36px 36px, 36px 36px;
+}
+
+/* Tactile Editorial Card Elevation & Texture */
+.tactile-card {
+  position: relative;
+  border: 1px solid rgba(32, 32, 32, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 1px 2px rgba(32, 32, 32, 0.04),
+    0 10px 24px -18px rgba(32, 32, 32, 0.14);
+  transition:
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms ease;
+}
+
+.tactile-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(32, 32, 32, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 6px 14px -8px rgba(32, 32, 32, 0.08),
+    0 24px 44px -22px rgba(32, 32, 32, 0.18);
+}
+
+.tactile-widget {
+  background-color: var(--color-canvas-white);
+  background-image:
+    var(--paper-noise),
+    linear-gradient(180deg, #ffffff 0%, #fcfbf9 100%);
+  border: 1px solid rgba(32, 32, 32, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 6px rgba(32, 32, 32, 0.03),
+    0 16px 34px -20px rgba(32, 32, 32, 0.12);
+  transition:
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tactile-widget-active {
+  transform: translateY(-3px);
+  border-color: rgba(255, 104, 44, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 10px 24px -10px rgba(255, 104, 44, 0.14),
+    0 24px 44px -20px rgba(32, 32, 32, 0.16);
+}
+
+/* Tactile Ventriloc Buttons with Directional Fill & Grain Texture */
 .btn-graphite {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   font-family: var(--font-polysans);
   font-weight: 400;
   font-size: 16px;
@@ -131,44 +224,163 @@
   letter-spacing: -0.02em;
   border-radius: 0px;
   background-color: var(--color-graphite);
+  background-image: var(--paper-noise-dark);
   color: var(--color-canvas-white);
-  padding: 12px 22px;
-  transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1), color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--color-graphite);
+  padding: 13px 24px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 2px 6px rgba(32, 32, 32, 0.12);
+  transition:
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 200ms ease;
+}
+
+.btn-graphite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #2e2e2e 0%, #3a3531 100%);
+  transform: translateY(102%);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-graphite::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-ember-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-graphite:hover {
-  background-color: #363636;
+  transform: translateY(-1.5px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 12px 24px -10px rgba(32, 32, 32, 0.35);
+}
+
+.btn-graphite:hover::before {
+  transform: translateY(0%);
+}
+
+.btn-graphite:hover::after {
+  transform: scaleX(1);
+}
+
+.btn-graphite:active {
+  transform: translateY(0px) scale(0.985);
 }
 
 .btn-ghost-graphite {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   font-family: var(--font-polysans);
   font-weight: 400;
   font-size: 16px;
   line-height: 1;
   letter-spacing: -0.02em;
   border-radius: 0px;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.6);
+  background-image: var(--paper-noise);
   color: var(--color-graphite);
-  border: 1px solid var(--color-graphite);
-  padding: 11px 22px;
-  transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1), color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(32, 32, 32, 0.75);
+  padding: 13px 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    color 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease;
+}
+
+.btn-ghost-graphite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-graphite);
+  background-image: var(--paper-noise-dark);
+  transform: translateY(102%);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-ghost-graphite:hover {
-  background-color: var(--color-graphite);
   color: var(--color-canvas-white);
+  border-color: var(--color-graphite);
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 22px -12px rgba(32, 32, 32, 0.28);
 }
 
+.btn-ghost-graphite:hover::before {
+  transform: translateY(0%);
+}
+
+.btn-ghost-graphite:active {
+  transform: translateY(0px) scale(0.985);
+}
+
+/* Kinetic Vertical Dual-Text Roll for Editorial Buttons */
+.btn-roll-track {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.15em;
+  overflow: hidden;
+  line-height: 1.15em;
+}
+
+.btn-roll-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 1.15em;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .btn-roll-item,
+button:hover > .btn-roll-track .btn-roll-item {
+  transform: translateY(-100%);
+}
+
+/* Signature Ember Orange Link */
 .link-ember {
-  text-decoration: underline;
-  text-decoration-color: var(--color-ember-orange);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  transition: color 160ms ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  padding-bottom: 2px;
+  transition: color 180ms ease;
+}
+
+.link-ember::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--color-ember-orange);
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .link-ember:hover {
   color: var(--color-ember-orange);
+}
+
+.link-ember:hover::after {
+  transform: scaleX(0.45);
+  transform-origin: left;
 }
 
 .tabular-nums {
