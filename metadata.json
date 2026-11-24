@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Mortila Brokerage — Editorial Domain Portfolio & Advisory",
+  "description": "Private domain brokerage, curated ultra-premium digital asset portfolio, institutional escrow advisory, and portfolio management console.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
